@@ -21,6 +21,7 @@ export default function Index() {
         isLeader: false,
     });
     const [proxy, setProxy] = React.useState();
+
     const { t } = useTranslation();
     const addProxyModal = React.useRef();
     const bubbleDialog = React.useRef();
@@ -33,11 +34,10 @@ export default function Index() {
         }
     }, []);
 
-
-    function getNodeInfo() {
+    
+    const getNodeInfo = () => {
         axios.get('/info').then(
             ({ data }) => {
-                // console.log(data.data.info);
                 setInfo(data.data.info);
                 setLoading(false);
             },
@@ -45,10 +45,10 @@ export default function Index() {
         );
     }
 
-    function getProxyInfo() {
+    const getProxyInfo = () => {
         axios.get('/proxy').then(
             ({ data }) => {
-                // console.log(data.data.data);
+                console.log(data.data.data);
                 const proxyInfo = data.data.data;
                 wrapProxyInfo(proxyInfo);
 
@@ -60,22 +60,24 @@ export default function Index() {
     function wrapProxyInfo(data) {
         let treeData = [];
         for (let key in data) {
+            const { hosts, balancerMode } = data[key];
             let tmp = {
-                title: key,
+                title: key + "---" + balancerMode,
                 key: key,
                 isLeaf: false,
                 pattern: key,
+                lb: balancerMode,
                 host: "",
                 children: [],
             };
-            for (let i = 0; i < data[key].length; i++) {
+            for (let i = 0; i < hosts.length; i++) {
                 tmp.children.push({
-                    title: data[key][i]['host'],
-                    key: key + '/' + data[key][i]['host'],
+                    title: hosts[i]['host'],
+                    key: key + '/' + hosts[i]['host'],
                     isLeaf: true,
                     pattern: key,
-                    host: data[key][i]['host'],
-                    icon: data[key][i]['alive'] ? (<img src={link}></img>) : (<img src={offline}></img>)
+                    host: hosts[i]['host'],
+                    icon: hosts[i]['alive'] ? (<img src={link}></img>) : (<img src={offline}></img>)
                 });
             }
             treeData.push(tmp);
@@ -90,11 +92,11 @@ export default function Index() {
     const proxyClick = (e) => {
         // console.log(e)
         // console.log(bubbleDialog.current)
-        bubbleDialog.current.showModal(e.event.clientX, e.event.clientY, e.node.isLeaf, e.node.pattern, e.node.host);
+        bubbleDialog.current.showModal(e.event.clientX, e.event.clientY, e.node);
     }
 
     return (
-        <div className='index'>
+        <div className='index' onClick={() => bubbleDialog.current.close()}>
             <div className="loading" hidden={!loading}>
                 <Spin size="large" spinning={loading} tip={t("other.loading")} />
             </div>

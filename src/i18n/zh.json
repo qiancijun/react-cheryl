@@ -28,8 +28,10 @@
             "hint": "http://127.0.0.1:8080",
             "add": "添加地址",
             "round-robin": "轮询模式",
+            "consistence-hash": "一致性哈希",
             "success": "添加成功",
-            "add_host": "添加代理主机"
+            "add_host": "添加代理主机",
+            "change_lb": "改变负载均衡模式"
         }
     },
     "rate": {

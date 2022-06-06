@@ -28,6 +28,7 @@
             "hint": "http://127.0.0.1:8080",
             "add": "Add",
             "round-robin": "round-robin",
+            "consistence-hash": "consistence-hash",
             "success": "add successfully",
             "add_host": "add proxy host"
         }

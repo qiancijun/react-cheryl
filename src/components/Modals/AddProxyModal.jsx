@@ -11,16 +11,38 @@ const AddProxyModal = forwardRef((props, ref) => {
     const [pattern, setPattern] = React.useState("");
     const [proxy_pass, setPass] = React.useState([]);
     const [balance_mode, setBalance] = React.useState("round-robin")
+    const [lbMode, setLbMode] = React.useState(new Array());
     const { t } = useTranslation();
     useImperativeHandle(ref, () => ({
         showModal
     }));
 
     React.useEffect(() => {
+        getBalancerMode();
         return () => {
 
         }
     }, [])
+
+    const getBalancerMode = () => {
+        axios.get('/balancerMode').then(
+            ({ data }) => {
+                const { mode } = data.data;
+                // setLbMode(data.data.mode);
+                let options = [];
+                for (let i in mode) {
+                    const type = mode[i];
+                    let dom = (
+                        <Option key={type} value={type}>{t('index.modal.' + type)}</Option>
+                    )
+                    options.push(dom);
+                }
+                setLbMode(options);
+            },
+            err => console.log(err)
+        )
+    }
+
 
     const showModal = () => {
         setVisible(true);
@@ -82,7 +104,8 @@ const AddProxyModal = forwardRef((props, ref) => {
                     label={t('index.modal.balance')}
                 >
                     <Select defaultValue="round-robin" style={{ width: 180 }} onChange={handleChange}>
-                        <Option value="round-robin">{t('index.modal.round-robin')}</Option>
+                        {/* <Option value="round-robin">{t('index.modal.round-robin')}</Option> */}
+                        {lbMode}
                     </Select>
                 </Form.Item>
                 <Form.List

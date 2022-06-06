@@ -2,8 +2,10 @@ import { message } from 'antd';
 import axios from 'axios';
 import React, { forwardRef, useImperativeHandle } from 'react'
 import './index.scss'
-import AddHostModal from '../Modals/AddHostModal';
 import { useTranslation } from 'react-i18next'
+
+import AddHostModal from '../Modals/AddHostModal';
+import ChangeLbModeModal from '../Modals/ChangeLbModeModal';
 
 const BubbleDialog = forwardRef((props, ref) => {
 
@@ -11,20 +13,26 @@ const BubbleDialog = forwardRef((props, ref) => {
   const [isLeaf, setIsLeaf] = React.useState(false);
   const [pattern, setPattern] = React.useState("");
   const [host, setHost] = React.useState("");
+  const [node, setNode] = React.useState({});
   const [x, setX] = React.useState(0);
   const [y, setY] = React.useState(0);
 
   const dialog = React.useRef();
   const addHostRef = React.useRef();
+  const changeLbModeModal = React.useRef();
+
   const { getProxyInfo } = props;
 
   const { t } = useTranslation();
 
   useImperativeHandle(ref, () => ({
-    showModal
+    showModal,
+    close
   }))
 
-  const showModal = (x, y, isLeaf, pattern, host) => {
+  const showModal = (x, y, node) => {
+    const { isLeaf, pattern, host} = node;
+    setNode(node);
     setVisible(true);
     setIsLeaf(isLeaf);
     setPattern(pattern)
@@ -81,7 +89,7 @@ const BubbleDialog = forwardRef((props, ref) => {
   }
 
   const changeLoadBalance = () => {
-
+    changeLbModeModal.current.showModal(node);
   }
 
   const close = () => {
@@ -96,6 +104,7 @@ const BubbleDialog = forwardRef((props, ref) => {
       <div className="delete-host" hidden={!isLeaf} onClick={deleteHost}>{t('bubble.delete_host')}</div>
       <div className="delete-host" onClick={() => setVisible(false)}>{t('bubble.close')}</div>
       <AddHostModal ref={addHostRef} close={close} getProxyInfo={props.getProxyInfo}/>
+      <ChangeLbModeModal ref={changeLbModeModal}/>
     </div>
   )
 });
