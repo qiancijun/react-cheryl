@@ -1,0 +1,75 @@
+{
+    "language": "language",
+    "footer": {
+        "detail": "All rights reserved @ Cheryl"
+    },
+    "sideBar": {
+        "index": "Home",
+        "raft": "Cluster",
+        "rate": "Rate-Limiting",
+        "acl": "ACL(Access Control List)"
+    },
+    "other": {
+        "loading": "loading",
+        "success": "delete successfully"
+    },
+    "index": {
+        "desc_title": "Node Info",
+        "desc_node_name": "Node Name",
+        "desc_proxy_port": "Server Port",
+        "desc_raft_address": "Raft Address",
+        "desc_is_leader": "Role",
+        "proxy_title": "Agency Address ",
+        "modal": {
+            "add_proxy": "Add Proxy",
+            "pattern": "prefix", 
+            "balance": "Load balancing mode", 
+            "proxy_address": "proxy address",
+            "hint": "http://127.0.0.1:8080",
+            "add": "Add",
+            "round-robin": "round-robin",
+            "success": "add successfully",
+            "add_host": "add proxy host"
+        }
+    },
+    "rate": {
+        "modal": {
+            "qps": "Query rate per second",
+            "concurrent": "Maximum concurrency",
+            "type": "type",
+            "volumn": "initial capacity",
+            "speed": "speed",
+            "timeout": "time-out"
+        },
+        "info": {
+            "type": "limiter type",
+            "volumn": "the number of Initial token in token bucket",
+            "speed": "number of tokens generated per second",
+            "timeout": "Get the token timeout in milliseconds"
+        }
+    },
+    "acl": {
+        "insert": "add",
+        "delete": "delete",
+        "ipAddress": "ip address",
+        "action": "operation",
+        "confirm": "This operation is irreversible. Do you want to continue?",
+        "handle": {
+            "success": "delete successfully ",
+            "error": "fail to delete"
+        },
+        "modal": {
+            "cidr": "CIDR",
+            "mask": "subnet mask",
+            "success": "operate successfully",
+            "fail": "fail to delete"
+        }
+    },
+    "bubble": {
+        "delete_proxy": "delete proxy",
+        "add_host": "add host",
+        "load_balance": "load balance",
+        "delete_host": "delete host",
+        "close": "close"
+    }
+}

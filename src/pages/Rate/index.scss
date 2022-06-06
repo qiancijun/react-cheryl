@@ -1,0 +1,23 @@
+.rate {
+    height: 100%;
+    width: 100%;
+}
+
+.method {
+    font-size: 16px;
+    line-height: 30px;
+    height: 30px;
+    width: 100%;
+    // background-color: #bfa;
+    margin-top: 10px;
+    padding-left: 20px;
+    &:nth-child(1) {
+        margin-top: 0;
+    }
+    &:hover {
+        cursor: pointer;
+        border-bottom: 0 none;
+        background-color: #FFF;
+        box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, .15)
+    }
+}

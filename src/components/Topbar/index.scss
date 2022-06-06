@@ -1,0 +1,27 @@
+.topbar {
+    width: 100%;
+    height: 64px;
+    padding: 0 20px;
+    background-color: #fff;
+    position: relative;
+    // div {
+    //     position: absolute;
+    //     top: 25%;
+    //     right: 2%;
+    // }
+    .lang {
+        .language {
+            margin-right: 10px;
+        }
+        position: absolute;
+        top: 0%;
+        right: 2%;
+    }
+    .logo {
+        height: 60px;
+        width: auto;
+        padding: 0;
+        margin: 0;
+        margin-left: 10px;
+    }
+}

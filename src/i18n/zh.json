@@ -1,0 +1,75 @@
+{
+    "language": "语言",
+    "footer": {
+        "detail": "版权所有 @ Cheryl"
+    },
+    "sideBar": {
+        "index": "首页",
+        "raft": "集群",
+        "rate": "限流",
+        "acl": "访问控制列表"
+    },
+    "other": {
+        "loading": "加载中",
+        "success": "删除成功"
+    },
+    "index": {
+        "desc_title": "节点信息",
+        "desc_node_name": "节点名称",
+        "desc_proxy_port": "服务端口",
+        "desc_raft_address": "Raft地址",
+        "desc_is_leader": "角色",
+        "proxy_title": "代理地址",
+        "modal": {
+            "add_proxy": "添加代理",
+            "pattern": "匹配前缀",
+            "balance": "负载均衡模式",
+            "proxy_address": "代理地址",
+            "hint": "http://127.0.0.1:8080",
+            "add": "添加地址",
+            "round-robin": "轮询模式",
+            "success": "添加成功",
+            "add_host": "添加代理主机"
+        }
+    },
+    "rate": {
+        "modal": {
+            "qps": "每秒查询率",
+            "concurrent": "最大并发数",
+            "type": "类型",
+            "volumn": "初始容量",
+            "speed": "速率",
+            "timeout": "超时时间"
+        },
+        "info": {
+            "type": "限流器类型",
+            "volumn": "令牌桶初始令牌数量",
+            "speed": "每秒产生令牌数量",
+            "timeout": "获取令牌超时时间，单位毫秒"
+        }
+    },
+    "acl": {
+        "insert": "添加",
+        "delete": "删除",
+        "ipAddress": "ip地址",
+        "action": "操作",
+        "confirm": "该操作不可逆，是否继续？",
+        "handle": {
+            "success": "删除成功",
+            "error": "删除失败"
+        },
+        "modal": {
+            "cidr": "网段",
+            "mask": "子网掩码",
+            "success": "操作成功",
+            "fail": "操作失败"
+        }
+    },
+    "bubble": {
+        "delete_proxy": "删除代理",
+        "add_host": "添加主机",
+        "load_balance": "负载均衡",
+        "delete_host": "删除主机",
+        "close": "关闭"
+    }
+}
